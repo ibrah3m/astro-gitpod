@@ -2,10 +2,17 @@
 reponame="ASTRO_REPO"
 if [ "$TASK" == "init" ]; then
 # Set up a given ASTRO_REPO repository in gitpod (default to astro template)
-export ASTRO_REPO=${ASTRO_REPO:-https://github.com/astro/template}
-echo "Checking out repository ${ASTRO_REPO}"
 
-git clone ${ASTRO_REPO} ${GITPOD_REPO_ROOT}/${reponame}
+echo "Checking out repository ${ASTRO_REPO}"
+if [ -z "$VARIABLE" ]; then
+    pnpm create astro@latest name --template minimal
+    mv ${GITPOD_REPO_ROOT}/minimal ${reponame}
+
+else
+    git clone ${ASTRO_REPO} ${GITPOD_REPO_ROOT}/${reponame}
+fi
+
+
 if [ -d ${GITPOD_REPO_ROOT}/${reponame} ]; then
   cd ${GITPOD_REPO_ROOT}/${reponame}
   pnpm install
