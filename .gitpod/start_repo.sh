@@ -5,8 +5,8 @@ if [ "$TASK" == "init" ]; then
 
 echo "Checking out repository ${ASTRO_REPO}"
 if [ -z "$VARIABLE" ]; then
-    pnpm create astro@latest name --template minimal
-    mv ${GITPOD_REPO_ROOT}/minimal ${reponame}
+    pnpm create astro@latest  $reponame --template minimal -y
+ 
 
 else
     git clone ${ASTRO_REPO} ${GITPOD_REPO_ROOT}/${reponame}
