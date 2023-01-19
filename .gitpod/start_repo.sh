@@ -4,7 +4,7 @@ if [ "$TASK" == "init" ]; then
 # Set up a given ASTRO_REPO repository in gitpod (default to astro template)
 
 echo "Checking out repository ${ASTRO_REPO}"
-if [ -z "$VARIABLE" ]; then
+if [ -z "$ASTRO_REPO" ]; then
     pnpm create astro@latest  $reponame --template minimal -y
  
 
